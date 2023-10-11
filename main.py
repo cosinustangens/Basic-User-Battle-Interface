@@ -6,14 +6,14 @@ class MainWindow(qtw.QWidget):
         super().__init__()
 
         #add title
-        self.setWindowTitle("Die Wilde Hilde")
+        self.setWindowTitle("Die Wilde Hilde (v.0.01")
 
         # Set Vertical ('V') Layout
         self.setLayout(qtw.QVBoxLayout())
         my_label = qtw.QLabel("Generate License Key")
 
         # Change the font size of label
-        my_label.setFont(qtg.QFont('AniMe Matrix - MB_EN', 18))
+        #my_label.setFont(qtg.QFont('AniMe Matrix - MB_EN', 18))
         self.layout().addWidget(my_label)
 
         # Create Input Box
@@ -26,9 +26,6 @@ class MainWindow(qtw.QWidget):
 
         my_button = qtw.QPushButton("GENERATE DLL")
         self.layout().addWidget(my_button)
-
-
-
 
 
         self.show()
