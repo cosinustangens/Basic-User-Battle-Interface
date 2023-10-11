@@ -6,7 +6,7 @@ class MainWindow(qtw.QWidget):
         super().__init__()
 
         #add title
-        self.setWindowTitle("Die Wilde Hilde (v.0.01")
+        self.setWindowTitle("Die Wilde Hilde (v.0.01)")
 
         # Set Vertical ('V') Layout
         self.setLayout(qtw.QVBoxLayout())
@@ -23,7 +23,6 @@ class MainWindow(qtw.QWidget):
         self.layout().addWidget(my_entry)
 
         # Create Button
-
         my_button = qtw.QPushButton("GENERATE DLL")
         self.layout().addWidget(my_button)
 
