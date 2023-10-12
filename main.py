@@ -2,7 +2,7 @@ import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import PyQt5.QtCore as qtc
 
-VERSION_INFO = "v0.4-2-alpha"
+VERSION_INFO = "v0.5-3-alpha"
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
