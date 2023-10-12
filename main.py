@@ -2,7 +2,7 @@ import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import PyQt5.QtCore as qtc
 
-VERSION_INFO = "v0.3-alpha"
+VERSION_INFO = "v0.3-1-alpha"
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
@@ -131,29 +131,33 @@ class AboutMe(qtw.QWidget):
         self.setWindowTitle("Made with ♡")
         self.setFixedSize(450,150)
 
-        layout = qtw.QVBoxLayout()
 
-        name_label = qtw.QLabel("Author: Felix Kaiser")
-        layout.addWidget(name_label)
+        outer_layout = qtw.QHBoxLayout()
+        layout_info = qtw.QVBoxLayout()
+        layout_pic = qtw.QVBoxLayout()
+
+        name_label = qtw.QLabel("Author: Felix Kaiser aka CosinusTangens")
+        layout_info.addWidget(name_label)
 
         mail_label = qtw.QLabel("Mail: felix.ka.94@gmail.com")
-        layout.addWidget(mail_label)
+        layout_info.addWidget(mail_label)
 
         github_label = qtw.QLabel("GitHub: github.com/cosinustangens")
-        layout.addWidget(github_label)
+        layout_info.addWidget(github_label)
 
         campus_label = qtw.QLabel("Campus: Frankfurt University of Applied Sciences - FB2")
-        layout.addWidget(campus_label)
+        layout_info.addWidget(campus_label)
 
         license_label = qtw.QLabel("License: MIT License - Copyright © 2023 Felix Kaiser")
-        layout.addWidget(license_label)
+        layout_info.addWidget(license_label)
 
         version_label = qtw.QLabel(f"Version Control: {VERSION_INFO}")
-        layout.addWidget(version_label)
+        layout_info.addWidget(version_label)
 
 
+        outer_layout.addLayout(layout_info)
 
-        self.setLayout(layout)
+        self.setLayout(outer_layout)
 
 
 app = qtw.QApplication([])
