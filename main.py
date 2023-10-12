@@ -178,7 +178,7 @@ class AboutMe(qtw.QWidget):
         # palette = qtg.QPalette()
         # palette.setColor(qtg.QPalette.Window, qtg.QColor(255, 255, 255))
         # self.setPalette(palette)
-        # self.setStyleSheet("color: white;")
+        # self.setStyleSheet("color: white;")#as
 
 
         # Infos
