@@ -7,8 +7,9 @@ class MainWindow(qtw.QWidget):
         super().__init__()
 
         #add title
-        self.setWindowTitle("Witcher PnP Calculator (v0.1-alpha)")
+        self.setWindowTitle("Witcher PnP Calculator (v0.3-alpha)")
         self.setFixedSize(500, 320)
+
 
         # Create Various Layouts
         outerLayout = qtw.QVBoxLayout() # Main Layout
@@ -62,16 +63,20 @@ class MainWindow(qtw.QWidget):
         hkrit_box = qtw.QCheckBox("Schwerer Krit")
         critLayout.addWidget(hkrit_box)
 
-        # Create Button + Final Value
-        attack_button = qtw.QPushButton("Rechne...", clicked = lambda: calc())
-        calculateLayout.addWidget(attack_button)
-
         # Create Damage Output
         final_label = qtw.QLabel("-")
         final_label.setFont(qtg.QFont('Impact', 20))
         final_label.setAlignment(qtc.Qt.AlignHCenter)
         calculateLayout.addWidget(final_label)
 
+        # Create Button + Final Value
+        attack_button = qtw.QPushButton("Rechne", clicked = lambda: calc())
+        calculateLayout.addWidget(attack_button)
+
+        # Exit Window
+        exit_button = qtw.QPushButton("Beenden")
+        exit_button.clicked.connect(qtw.QApplication.quit)
+        calculateLayout.addWidget(exit_button)
 
         #Nest Layouts
         outerLayout.addLayout(attackerLayout)
@@ -100,14 +105,14 @@ class MainWindow(qtw.QWidget):
             armor = int(armor_value.text())
             xvar = int(xvar_value.text())
 
-            res = int((dmg-armor-xvar)*body*crit)
+            res = (dmg-armor-xvar)*body*crit
             print(res)
 
             final_label.setText(str(res))
             # (DMG - Rüstung - Wert X) * Körperteil * Krit = Final_Label
 
-        self.show()
 
+        self.show()
 
 app = qtw.QApplication([])
 mw = MainWindow()
