@@ -9,7 +9,7 @@ class MainWindow(qtw.QWidget):
         super().__init__()
 
         #add title
-        self.setWindowTitle(f"Witcher PnP Calculator ({VERSION_INFO})")
+        self.setWindowTitle(f"WPnP Damage Calculator ({VERSION_INFO})")
         self.setFixedSize(400, 470)
         self.setWindowIcon(qtg.QIcon("_internal/resources/logo.ico"))
 
