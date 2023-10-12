@@ -2,13 +2,15 @@ import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import PyQt5.QtCore as qtc
 
+VERSION_INFO = "v0.3-alpha"
+
 class MainWindow(qtw.QWidget):
     def __init__(self):
         super().__init__()
 
         #add title
-        self.setWindowTitle("Witcher PnP Calculator (v0.3-alpha)")
-        self.setFixedSize(500, 320)
+        self.setWindowTitle(f"Witcher PnP Calculator ({VERSION_INFO})")
+        self.setFixedSize(500, 350)
 
 
         # Create Various Layouts
@@ -73,6 +75,10 @@ class MainWindow(qtw.QWidget):
         attack_button = qtw.QPushButton("Rechne", clicked = lambda: calc())
         calculateLayout.addWidget(attack_button)
 
+        # Create Button + Final Value
+        about_button = qtw.QPushButton("Über mich", clicked=lambda: about())
+        calculateLayout.addWidget(about_button)
+
         # Exit Window
         exit_button = qtw.QPushButton("Beenden")
         exit_button.clicked.connect(qtw.QApplication.quit)
@@ -87,6 +93,10 @@ class MainWindow(qtw.QWidget):
         outerLayout.addLayout(calculateLayout)
 
         self.setLayout(outerLayout)
+
+        def about():
+            self.aw = AboutMe()
+            self.aw.show()
 
         def calc():
             crit = 1
@@ -113,6 +123,38 @@ class MainWindow(qtw.QWidget):
 
 
         self.show()
+
+class AboutMe(qtw.QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Made with ♡")
+        self.setFixedSize(450,150)
+
+        layout = qtw.QVBoxLayout()
+
+        name_label = qtw.QLabel("Author: Felix Kaiser")
+        layout.addWidget(name_label)
+
+        mail_label = qtw.QLabel("Mail: felix.ka.94@gmail.com")
+        layout.addWidget(mail_label)
+
+        github_label = qtw.QLabel("GitHub: github.com/cosinustangens")
+        layout.addWidget(github_label)
+
+        campus_label = qtw.QLabel("Campus: Frankfurt University of Applied Sciences - FB2")
+        layout.addWidget(campus_label)
+
+        license_label = qtw.QLabel("License: MIT License - Copyright © 2023 Felix Kaiser")
+        layout.addWidget(license_label)
+
+        version_label = qtw.QLabel(f"Version Control: {VERSION_INFO}")
+        layout.addWidget(version_label)
+
+
+
+        self.setLayout(layout)
+
 
 app = qtw.QApplication([])
 mw = MainWindow()
