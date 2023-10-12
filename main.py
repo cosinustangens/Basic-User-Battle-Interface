@@ -48,10 +48,8 @@ class MainWindow(qtw.QWidget):
         defenseLayout.addWidget(defense_label)
 
         # Create Defense Form
-
         defenseFormLayout.addRow("Rüstung: ", armor_value)
         defenseFormLayout.addRow("Wert X: ", xvar_value)
-
 
 
         # Create Crit Boxes
@@ -109,9 +107,6 @@ class MainWindow(qtw.QWidget):
             # (DMG - Rüstung - Wert X) * Körperteil * Krit = Final_Label
 
         self.show()
-
-
-
 
 
 app = qtw.QApplication([])
