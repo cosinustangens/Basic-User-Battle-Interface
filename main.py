@@ -11,7 +11,7 @@ class MainWindow(qtw.QWidget):
         #add title
         self.setWindowTitle(f"Witcher PnP Calculator ({VERSION_INFO})")
         self.setFixedSize(400, 470)
-        self.setWindowIcon(qtg.QIcon("witcher_icon.png"))
+        self.setWindowIcon(qtg.QIcon("resources/witcher_icon.png"))
 
         # Farbpalette Background + Font
         # palette = qtg.QPalette()
@@ -35,7 +35,7 @@ class MainWindow(qtw.QWidget):
 
         # Create Picture Banner
         picture_label = qtw.QLabel()
-        pixmap = qtg.QPixmap("Witcher_Logo.png")
+        pixmap = qtg.QPixmap("resources/Witcher_Logo.png")
         picture_label.setPixmap(pixmap)
         picture_label.setAlignment(qtc.Qt.AlignCenter)
         attackerLayout.addWidget(picture_label)
@@ -172,7 +172,7 @@ class AboutMe(qtw.QWidget):
 
         self.setWindowTitle("Made with ♡")
         self.setFixedSize(510,180)
-        self.setWindowIcon(qtg.QIcon("witcher_icon.png"))
+        self.setWindowIcon(qtg.QIcon("resources/witcher_icon.png"))
 
         # Farbpalette Background + Font
         # palette = qtg.QPalette()
@@ -222,7 +222,7 @@ class AboutMe(qtw.QWidget):
 
         # Picture
         picture_label = qtw.QLabel()
-        pixmap = qtg.QPixmap("Gemeinde.jpg")
+        pixmap = qtg.QPixmap("resources/Gemeinde.jpg")
         picture_label.setPixmap(pixmap)
         picture_label.setAlignment(qtc.Qt.AlignRight)
         layout_pic.addWidget(picture_label)
