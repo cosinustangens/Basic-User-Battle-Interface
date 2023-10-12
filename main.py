@@ -10,7 +10,7 @@ class MainWindow(qtw.QWidget):
 
         #add title
         self.setWindowTitle(f"Witcher PnP Calculator ({VERSION_INFO})")
-        self.setFixedSize(500, 350)
+        self.setFixedSize(400, 470)
 
         # Farbpalette Background + Font
         # palette = qtg.QPalette()
@@ -30,28 +30,55 @@ class MainWindow(qtw.QWidget):
         attackerLayout.setAlignment(qtc.Qt.AlignBottom)
         defenseLayout.setAlignment(qtc.Qt.AlignBottom)
 
+        attackerFormLayout.setAlignment(qtc.Qt.AlignCenter)
+
+        # Create Picture Banner
+        picture_label = qtw.QLabel()
+        pixmap = qtg.QPixmap("Witcher_Logo.png")
+        picture_label.setPixmap(pixmap)
+        picture_label.setAlignment(qtc.Qt.AlignCenter)
+        attackerLayout.addWidget(picture_label)
+
+        # Placeholder Dummy
+        placeholder = qtw.QLabel()  # Leeres QLabel als Platzhalter
+        attackerLayout.addWidget(placeholder)
 
 
 
-        #Create Angreifer Label
+        # Create Angreifer Label
         attacker_label = qtw.QLabel("Angreifer")
-        attacker_label.setFont(qtg.QFont('Impact', 15))
+        attacker_label.setFont(qtg.QFont('Impact', 14))
         attacker_label.setAlignment(qtc.Qt.AlignCenter)
         attackerLayout.addWidget(attacker_label)
 
-        #Create Form
+        # Create Form
         dmg_value = qtw.QLineEdit(self)
+        # dmg_value.setFixedSize(70, 20)
+        # dmg_value.setAlignment(qtc.Qt.AlignCenter)
+
         bodypart_value = qtw.QLineEdit(self)
+        # bodypart_value.setFixedSize(70, 20)
+        # bodypart_value.setAlignment(qtc.Qt.AlignCenter)
+
         armor_value = qtw.QLineEdit(self)
+        # armor_value.setFixedSize(70, 20)
+        # armor_value.setAlignment(qtc.Qt.AlignCenter)
+
         xvar_value = qtw.QLineEdit(self)
+        # xvar_value.setFixedSize(70, 20)
+        # xvar_value.setAlignment(qtc.Qt.AlignCenter)
 
 
         attackerFormLayout.addRow("DMG: ", dmg_value)
         attackerFormLayout.addRow("Körperteil: ", bodypart_value)
 
-        #Defense Label
+        # Placeholder Dummy
+        placeholder = qtw.QLabel()  # Leeres QLabel als Platzhalter
+        defenseLayout.addWidget(placeholder)
+
+        # Defense Label
         defense_label = qtw.QLabel("Verteidiger")
-        defense_label.setFont(qtg.QFont('Impact', 15))
+        defense_label.setFont(qtg.QFont('Impact', 14))
         defense_label.setAlignment(qtc.Qt.AlignCenter)
         defenseLayout.addWidget(defense_label)
 
@@ -75,6 +102,10 @@ class MainWindow(qtw.QWidget):
         final_label.setFont(qtg.QFont('Impact', 20))
         final_label.setAlignment(qtc.Qt.AlignHCenter)
         calculateLayout.addWidget(final_label)
+
+        # Placeholder Dummy
+        placeholder = qtw.QLabel()  # Leeres QLabel als Platzhalter
+        calculateLayout.addWidget(placeholder)
 
         # Create Button + Final Value
         attack_button = qtw.QPushButton("Rechne", clicked = lambda: calc())
@@ -126,7 +157,6 @@ class MainWindow(qtw.QWidget):
             final_label.setText(str(res))
             # (DMG - Rüstung - Wert X) * Körperteil * Krit = Final_Label
 
-
         self.show()
 
 class AboutMe(qtw.QWidget):
@@ -138,7 +168,7 @@ class AboutMe(qtw.QWidget):
 
         # Farbpalette Background + Font
         # palette = qtg.QPalette()
-        # palette.setColor(qtg.QPalette.Window, qtg.QColor(32, 33, 36))
+        # palette.setColor(qtg.QPalette.Window, qtg.QColor(255, 255, 255))
         # self.setPalette(palette)
         # self.setStyleSheet("color: white;")
 
@@ -169,6 +199,14 @@ class AboutMe(qtw.QWidget):
         license_label = qtw.QLabel("License: MIT License - Copyright © 2023 Felix Kaiser")
         license_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(license_label)
+
+        # Placeholder Dummy
+        placeholder = qtw.QLabel()  # Leeres QLabel als Platzhalter
+        layout_info.addWidget(placeholder)
+
+        special_label = qtw.QLabel("Special Thanks: Giuliano Micciche")
+        special_label.setFont(qtg.QFont('Arial', 9))
+        layout_info.addWidget(special_label)
 
         version_label = qtw.QLabel(f"Version Control: {VERSION_INFO}")
         version_label.setFont(qtg.QFont('Arial', 9))
