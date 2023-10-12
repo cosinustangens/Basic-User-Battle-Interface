@@ -32,8 +32,14 @@ class MainWindow(qtw.QWidget):
         attackerLayout.addWidget(attacker_label)
 
         #Create Form
-        attackerFormLayout.addRow("DMG: ", qtw.QLineEdit())
-        attackerFormLayout.addRow("Körperteil: ", qtw.QLineEdit())
+        dmg_value = qtw.QLineEdit(self)
+        bodypart_value = qtw.QLineEdit(self)
+        armor_value = qtw.QLineEdit(self)
+        xvar_value = qtw.QLineEdit(self)
+
+
+        attackerFormLayout.addRow("DMG: ", dmg_value)
+        attackerFormLayout.addRow("Körperteil: ", bodypart_value)
 
         #Defense Label
         defense_label = qtw.QLabel("Verteidiger")
@@ -42,20 +48,28 @@ class MainWindow(qtw.QWidget):
         defenseLayout.addWidget(defense_label)
 
         # Create Defense Form
-        defenseFormLayout.addRow("Rüstung: ", qtw.QLineEdit())
-        defenseFormLayout.addRow("Wert X: ", qtw.QLineEdit())
+
+        defenseFormLayout.addRow("Rüstung: ", armor_value)
+        defenseFormLayout.addRow("Wert X: ", xvar_value)
+
+
 
         # Create Crit Boxes
-        critLayout.addWidget(qtw.QCheckBox("Monster"))
-        critLayout.addWidget(qtw.QCheckBox("Krit"))
-        critLayout.addWidget(qtw.QCheckBox("Schwerer Krit"))
+        monster_box = qtw.QCheckBox("Monster")
+        critLayout.addWidget(monster_box)
 
-        # Create Bitton + Final Value
-        attack_button = qtw.QPushButton("Rechne...")
+        krit_box = qtw.QCheckBox("Krit")
+        critLayout.addWidget(krit_box)
+
+        hkrit_box = qtw.QCheckBox("Schwerer Krit")
+        critLayout.addWidget(hkrit_box)
+
+        # Create Button + Final Value
+        attack_button = qtw.QPushButton("Rechne...", clicked = lambda: calc())
         calculateLayout.addWidget(attack_button)
 
         # Create Damage Output
-        final_label = qtw.QLabel("25")
+        final_label = qtw.QLabel("-")
         final_label.setFont(qtg.QFont('Impact', 20))
         final_label.setAlignment(qtc.Qt.AlignHCenter)
         calculateLayout.addWidget(final_label)
@@ -70,6 +84,32 @@ class MainWindow(qtw.QWidget):
         outerLayout.addLayout(calculateLayout)
 
         self.setLayout(outerLayout)
+
+        def calc():
+            crit = 1
+            if monster_box.isChecked():
+                crit = 0.5
+                print("first box")
+            elif krit_box.isChecked():
+                crit = 3
+                print("second box")
+            elif hkrit_box.isChecked():
+                crit = 5
+                print("third box")
+
+            dmg = int(dmg_value.text())
+            body = int(bodypart_value.text())
+            armor = int(armor_value.text())
+            xvar = int(xvar_value.text())
+
+            res = (dmg-armor-xvar)*body*crit
+            print(res)
+
+            final_label.setText(str(res))
+            # (DMG - Rüstung - Wert X) * Körperteil * Krit = Final_Label
+
+
+
 
         self.show()
 
