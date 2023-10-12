@@ -2,7 +2,7 @@ import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import PyQt5.QtCore as qtc
 
-VERSION_INFO = "v0.3-2-alpha"
+VERSION_INFO = "v0.4-2-alpha"
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
@@ -11,6 +11,7 @@ class MainWindow(qtw.QWidget):
         #add title
         self.setWindowTitle(f"Witcher PnP Calculator ({VERSION_INFO})")
         self.setFixedSize(400, 470)
+        self.setWindowIcon(qtg.QIcon("witcher_icon.png"))
 
         # Farbpalette Background + Font
         # palette = qtg.QPalette()
@@ -138,23 +139,29 @@ class MainWindow(qtw.QWidget):
             crit = 1
             if monster_box.isChecked():
                 crit = 0.5
-                print("first box")
             elif krit_box.isChecked():
                 crit = 3
-                print("second box")
             elif hkrit_box.isChecked():
                 crit = 5
-                print("third box")
 
-            dmg = int(dmg_value.text())
-            body = int(bodypart_value.text())
-            armor = int(armor_value.text())
-            xvar = int(xvar_value.text())
+            dmg = float(dmg_value.text())
+            body = float(bodypart_value.text())
+            armor = float(armor_value.text())
+            xvar = float(xvar_value.text())
 
             res = (dmg-armor-xvar)*body*crit
             print(res)
 
+            if res % 1 == 0:
+                show_result(int(res))
+            else:
+                res = round(res, 1)
+                show_result(res)
+
+        def show_result(res):
             final_label.setText(str(res))
+
+
             # (DMG - Rüstung - Wert X) * Körperteil * Krit = Final_Label
 
         self.show()
@@ -164,7 +171,8 @@ class AboutMe(qtw.QWidget):
         super().__init__()
 
         self.setWindowTitle("Made with ♡")
-        self.setFixedSize(510,170)
+        self.setFixedSize(510,180)
+        self.setWindowIcon(qtg.QIcon("witcher_icon.png"))
 
         # Farbpalette Background + Font
         # palette = qtg.QPalette()
