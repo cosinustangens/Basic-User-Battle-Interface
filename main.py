@@ -43,7 +43,7 @@ class MainWindow(qtw.QWidget):
 
         #Defense Label
         defense_label = qtw.QLabel("Verteidiger")
-        defense_label.setFont(qtg.QFont('Impact', 13))
+        defense_label.setFont(qtg.QFont('Impact', 15))
         defense_label.setAlignment(qtc.Qt.AlignCenter)
         defenseLayout.addWidget(defense_label)
 
@@ -102,14 +102,11 @@ class MainWindow(qtw.QWidget):
             armor = int(armor_value.text())
             xvar = int(xvar_value.text())
 
-            res = (dmg-armor-xvar)*body*crit
+            res = int((dmg-armor-xvar)*body*crit)
             print(res)
 
             final_label.setText(str(res))
             # (DMG - Rüstung - Wert X) * Körperteil * Krit = Final_Label
-
-
-
 
         self.show()
 
