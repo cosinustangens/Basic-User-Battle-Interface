@@ -2,7 +2,7 @@ import PyQt5.QtWidgets as qtw
 import PyQt5.QtGui as qtg
 import PyQt5.QtCore as qtc
 
-VERSION_INFO = "v0.3-1-alpha"
+VERSION_INFO = "v0.3-2-alpha"
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
@@ -12,6 +12,11 @@ class MainWindow(qtw.QWidget):
         self.setWindowTitle(f"Witcher PnP Calculator ({VERSION_INFO})")
         self.setFixedSize(500, 350)
 
+        # Farbpalette Background + Font
+        # palette = qtg.QPalette()
+        # palette.setColor(qtg.QPalette.Window, qtg.QColor(32, 33, 36))
+        # self.setPalette(palette)
+        # self.setStyleSheet("color: white;")
 
         # Create Various Layouts
         outerLayout = qtw.QVBoxLayout() # Main Layout
@@ -129,33 +134,57 @@ class AboutMe(qtw.QWidget):
         super().__init__()
 
         self.setWindowTitle("Made with ♡")
-        self.setFixedSize(450,150)
+        self.setFixedSize(510,170)
+
+        # Farbpalette Background + Font
+        # palette = qtg.QPalette()
+        # palette.setColor(qtg.QPalette.Window, qtg.QColor(32, 33, 36))
+        # self.setPalette(palette)
+        # self.setStyleSheet("color: white;")
 
 
+        # Infos
         outer_layout = qtw.QHBoxLayout()
         layout_info = qtw.QVBoxLayout()
         layout_pic = qtw.QVBoxLayout()
 
+        layout_pic.setAlignment(qtc.Qt.AlignCenter)
+
         name_label = qtw.QLabel("Author: Felix Kaiser aka CosinusTangens")
+        name_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(name_label)
 
         mail_label = qtw.QLabel("Mail: felix.ka.94@gmail.com")
+        mail_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(mail_label)
 
         github_label = qtw.QLabel("GitHub: github.com/cosinustangens")
+        github_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(github_label)
 
         campus_label = qtw.QLabel("Campus: Frankfurt University of Applied Sciences - FB2")
+        campus_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(campus_label)
 
         license_label = qtw.QLabel("License: MIT License - Copyright © 2023 Felix Kaiser")
+        license_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(license_label)
 
         version_label = qtw.QLabel(f"Version Control: {VERSION_INFO}")
+        version_label.setFont(qtg.QFont('Arial', 9))
         layout_info.addWidget(version_label)
+
+        # Picture
+        picture_label = qtw.QLabel()
+        pixmap = qtg.QPixmap("Gemeinde.jpg")
+        picture_label.setPixmap(pixmap)
+        picture_label.setAlignment(qtc.Qt.AlignRight)
+        layout_pic.addWidget(picture_label)
+
 
 
         outer_layout.addLayout(layout_info)
+        outer_layout.addLayout(layout_pic)
 
         self.setLayout(outer_layout)
 
